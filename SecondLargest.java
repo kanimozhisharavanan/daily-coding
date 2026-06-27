@@ -1,21 +1,25 @@
-import java.util.*;
-class SecondLargest {
-    public static void main(String[] args){
+import java.util.Scanner;
+
+public class SecondLargest {
+    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
-        int arr[] = new int[n];
-        for (int i=0;i<n;i++){
+        int[] arr = new int[n];
+        for (int i = 0; i < n; i++) {
             arr[i] = sc.nextInt();
         }
-        Arrays.sort(arr);
-        int max = arr[n-1];
-        int sec = -1;
-        for(int i=n-2;i>=0;i--){
-            if(arr[i] != max){
-                sec = arr[i];
-                break;
+        int largest = arr[0];
+        int secondLargest = arr[0];
+        for (int i = 1; i < n; i++) {
+            if (arr[i] > largest) {
+                largest = arr[i];
             }
         }
-        System.out.println(sec);
+        for (int i = 0; i < n; i++) {
+            if (arr[i] > secondLargest && arr[i] < largest) {
+                secondLargest = arr[i];
+            }
+        }
+        System.out.println("Second Largest = " + secondLargest);
     }
 }
